@@ -39,6 +39,10 @@ python3 script.py
 ```
 python3 app.py
 ```
+For landing page client go to:
+```
+http://127.0.0.1:5000
+```
 
 ## Tests
 I used VS Code's Rest Client package to run GET and POST requests. See the "requests.rest" file.
