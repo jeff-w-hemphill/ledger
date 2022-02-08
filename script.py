@@ -3,8 +3,6 @@ from models import Entry, Loan
 from datetime import date, timedelta
 import json
 from flask import jsonify
-print('helelll0')
-
 
 # 1. Create the buckets in in-memory storage
 

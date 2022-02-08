@@ -18,7 +18,6 @@ loans.append(loan.to_json())
 
 @app.route('/')
 def index():
-    print(loans[0])
     return render_template('index.html', loan = loan)
 
 @app.route('/ledger/buckets', methods=['GET','POST'])
@@ -26,21 +25,26 @@ def create_buckets():
     if request.method == 'GET':
         return jsonify(buckets)
     else:
-        bucket = request.form['identifier']
-        print(bucket)
-        buckets.append(bucket)
-        return jsonify(buckets)
+        try:
+            bucket = request.form['identifier']
+            buckets.append(bucket)
+            return jsonify(buckets)
+        except:
+            return 'Error posting buckets'
 
 @app.route('/ledger/buckets/sum', methods=['GET'])
 def sum():
-    ids = request.args['bucketids'].split(',')
-    response = {}
-    for id in ids:
-        response[id] = 0
-        for item in loan.entries:
-            if id == item.bucketId:
-                response[id] += item.value
-    
+    try:
+        ids = request.args['bucketids'].split(',')
+        response = {}
+        for id in ids:
+            response[id] = 0
+            for item in loan.entries:
+                if id == item.bucketId:
+                    response[id] += item.value
+    except:
+        return 'Error summing buckets'
+        
     return response
 
 
