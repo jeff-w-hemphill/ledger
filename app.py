@@ -26,7 +26,8 @@ def create_buckets():
     if request.method == 'GET':
         return jsonify(buckets)
     else:
-        bucket = request.form["identifier"]
+        bucket = request.form['identifier']
+        print(bucket)
         buckets.append(bucket)
         return jsonify(buckets)
 
