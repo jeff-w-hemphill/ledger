@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Ledger</h1>
+    <table class="table">
+        <tr>
+            <th>Bucket</th>
+            <th>Value</th>
+            <th>Created At</th>
+            <th>Effective Date</th>
+        </tr>
+        <tr>
+        {% for entry in loan.entries %}
+            <td>{{ entry.bucketId }}</td>
+            <td>{{ entry.value }}</td>
+            <td>{{ entry.createdAt }}</td>
+            <td>{{ entry.effectiveDate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</div>
+{% endblock %}
